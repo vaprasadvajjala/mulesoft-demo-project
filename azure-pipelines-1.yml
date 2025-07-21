@@ -1,0 +1,11 @@
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'pom.xml'
+      options: '-B package'
+      mavenOptions: '-Xmx3072m'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'clean install
